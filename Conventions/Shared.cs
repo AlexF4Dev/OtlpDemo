@@ -21,8 +21,9 @@ public static class Extensions
     {
         builder.Services.AddServiceDiscovery().AddConfigurationServiceEndPointResolver();
 
-        HttpClientFactoryServiceCollectionExtensions.ConfigureHttpClientDefaults(builder.Services,
-            b => b.AddServiceDiscovery().AddStandardResilienceHandler());
+        builder.Services.ConfigureHttpClientDefaults(
+            b => b.AddServiceDiscovery().AddStandardResilienceHandler()
+        );
     }
 
     private static void AddOpenTelemetry(this IHostApplicationBuilder builder)
